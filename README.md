@@ -36,7 +36,7 @@ Create a new file by copying the `.env.example` file, and name it `.env`.
 ```
 cp .env.example .env
 ```
-Fill in your wallet's PRIVATE_KEY
+Fill in your wallet's PRIVATE_KEY with `0x` prefix.
 
 ### Deploy MyFirstFrameNFT to Frame 
 
