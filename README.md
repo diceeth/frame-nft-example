@@ -1,66 +1,72 @@
-## Foundry
+## Frame NFT Example
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+> **Note**
+>
+> This repository is intended for developers who want to try out the Frame in a quicker and easier manner!
 
-Foundry consists of:
+This repository simplifies the process of setting up RPC and EVM compatibility.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Prerequisites
 
-## Documentation
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
-https://book.getfoundry.sh/
+## Getting Started
+
+1. Install packages
+
+```
+forge install
+```
+
+2. Compile contracts
+
+```
+forge build
+```
+
+3. Test contracts
+
+```
+forge test
+```
 
 ## Usage
 
-### Build
+Create a new file by copying the `.env.example` file, and name it `.env`. 
+```
+cp .env.example .env
+```
+Fill in your wallet's PRIVATE_KEY
+
+### Deploy MyFirstFrameNFT to Frame 
+
+To deploy MyFirstFrameNFT to the Frame blockchain, run the following script:
 
 ```shell
-$ forge build
+forge script script/MyFirstFrameNFT.s.sol:DeployMyFirstFrameNFT -vvv --broadcast --rpc-url frameTestnet --evm-version "paris" --skip-simulation --sig "run()"
 ```
 
-### Test
+### Mint MyFirstFrameNFT 
+
+To Mint the MyFirstFrameNFT, run this script:
 
 ```shell
-$ forge test
+forge script script/MyFirstFrameNFT.s.sol:MyFirstFrameNFTScript -vvv --broadcast --rpc-url frameTestnet --evm-version "paris" --skip-simulation --sig "mint(address,uint256)" -- <MyFirstFrameNFT_ADDRESS> <QUANTITY>
 ```
 
-### Format
+Make sure to replace `<MyFirstFrameNFT_ADDRESS>` and `<QUANTITY>` with the actual values you intend to use in the script.
+
+### Contract Verification
+
+1. Flatten the contract, run this script:
 
 ```shell
-$ forge fmt
+forge flatten src/MyFirstFrameNFT.sol --output ./MyFirstFrameNFT.flattened.sol
+
 ```
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+2. Open the block explorer 
+3. Navigate to the contract's page
+4. Verify & Publish 
+5. For the verification method, choose "Via flattened source code."
+6. Copy and paste the flattened code into the code field
