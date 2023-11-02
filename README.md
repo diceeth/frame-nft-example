@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> This repository is TESTNET-USE ONLY and intended for developers who want to try out the Frame in a quicker and easier manner!
+> This repository is TESTNET-USE ONLY and intended for developers who want to try out Frame in a quicker and easier manner!
 
 This repository simplifies the process of setting up RPC and EVM compatibility.
 
